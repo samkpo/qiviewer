@@ -1,6 +1,10 @@
 Changelog of Qt-based Image Viewer
 
 --------------
+Version 0.7.0
+* Switched to CMake.
+* Removed webp support, temporarily
+
 Version 0.6.0
 * Added Russian localization.
 * Added Czech localization.
