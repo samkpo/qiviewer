@@ -1,0 +1,89 @@
+Changelog of Qt-based Image Viewer
+
+--------------
+Version 0.6.0
+* Added Russian localization.
+* Added Czech localization.
+* Added dialog to configure shortcuts.
+* Improved the search when editing the tool bar actions.
+* Improved edit toolbar dialog.
+* Internal code changes.
+
+Version 0.5.0
+* Added a clear list button in the recent files menu.
+* Added a print option.
+* Added a delete file option.
+* Added a move file to option.
+* Added a delete file option.
+* Added a jump to option
+* Added Greek translation
+* Added a help option to use in command line
+* Added option to set sorting order.
+* Added a dialog to config the toolbar.
+* Corrected some strings.
+* Bug fix. Now the shortcuts still working when the menu bar is hidden.
+* Bug fix, Now it loads the es_ES.ts trasnlation
+
+Version 0.4.0
+* Bug fix regarding .pro file.
+* Bug fix. Now it load translations on another plataforms.
+* Minor bug fixes regarding zoom and file properties dialog.
+* Fixed window title bug when tried to open a recent image that that has been moved or deleted.
+* Added posibility to move the viewed image with the mouse.
+* Added another easter egg.
+* Added icons (oxygen theme) for systems without icon theme, such as windows and OS/2
+* Added es_ES translation.
+* Added webp images support (experimental).
+
+Version 0.3.2
+* Fixed zooming bugs.
+* Fixed bug when opening images from command line.
+* Changes in about dialog.
+* Changes in file properties dialog.
+* Changes in configuration dialog.
+* Added a total useless egg. Find it!
+* Added svg images support.
+* Added posibility to flip and turn animated images.
+* Added option to set animated movies speed.
+* Added lost .desktop file
+* Removed shortcuts edit page from config dialog due to several bugs.
+* Removed some dialogs.
+
+Version 0.3.1
+* Fixed compiling bug for 4.6.3 Qt version
+
+Version 0.3.0
+* Bug fix. Now File Properties window shows correctly the image's weigth.
+* New way to set the shortcuts
+* Minor bug fixes
+* Now it can make zoom with the mouse wheel
+* The way it handles the image and the zoom has been rewritten
+* Added recent files menu entry
+* Added option to select the background squares size
+* Added a slider for zooming
+* Added chessBoard background for animated images
+* Added save option
+* Added recent images menu entry with option to select how many to show
+* Added option to show/hide menu bar
+
+Version 0.2.2
+* Added a .desktop file
+* Added option to load images from command line
+
+Version 0.2.1
+* Bugfixes
+
+Version 0.2.0
+* Use QPixmap instead QImage, reducing times
+* Now it's posible to set the background of images (not animated yet) and choose between two options
+* A little bit of code clean up
+* A shortcut editor in configuration dialog
+
+Version 0.1.0
+*A complete (at least a %80 ;-) ) rewritten config dialog, with a new way to configure toolbar actions
+
+Version 0.0.1.1
+* added a button to add actions in the config dialog
+
+Version 0.0.1
+* first test release

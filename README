@@ -1,0 +1,29 @@
+QIviewer - Qt-based Image Viewer
+
+=Supported formats:
+- BMP
+- GIF
+- JPG
+- JPEG
+- PNG
+- PBM
+- PGM
+- PPM
+- XBM
+- XPM
+
+=Configure:
+Prefix is by default /usr, you can change it using PREFIX=prefix.
+To enable EXPERIMENTAL webp support, add CONFIG+=enable-webp to the following line
+To hack add CONFIG+=USE_DEVELOPING to the qmake execute line
+
+qmake PREFIX=prefix
+
+=Build:
+make
+
+=Installation
+make install
+
+=All patches, bug reports, ideas etc. send to dario_21_06@hotmail.com or use issue tracker
+http://code.google.com/p/qiviewer/issues/list

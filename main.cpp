@@ -44,13 +44,17 @@ int main(int argc, char* argv[])
     QString dataDir("");
 #endif
 
-  
-//#if defined(Q_OS_OS2) //|| defined(Q_OS_WIN) ->this isn't checked
-//  QString    localeDir = qApp->applicationDirPath() + QDir::separator() + "locale";
-//#else
-//  QString    localeDir = dataDir + QDir::separator() + "locale";
-//#endif
+#ifdef USE_DEVELOPING
+	qDebug() << "Developing";
     QString    localeDir = qApp->applicationDirPath() + QDir::separator() + "locale";
+#else
+qDebug() << "not developing";
+#if defined(Q_OS_OS2) //|| defined(Q_OS_WIN) ->this isn't checked
+  QString    localeDir = qApp->applicationDirPath() + QDir::separator() + "locale";
+#else
+  QString    localeDir = dataDir + QDir::separator() + "locale";
+#endif
+#endif
 
   QTranslator translator;
   translator.load(locale, localeDir);
