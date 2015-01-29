@@ -13,16 +13,18 @@ QIviewer - Qt-based Image Viewer
 - XPM
 
 =Configure:
-Prefix is by default /usr, you can change it using PREFIX=prefix.
-To enable EXPERIMENTAL webp support, add CONFIG+=enable-webp to the following line
+Prefix is by default /usr/local, you can change it using -DCMAKE_INSTALL_PREFIX=prefix
+If you wish to hack in the project, use the option -DUSE_DEVELOPING=ON with cmake
 
-qmake PREFIX=prefix
+mkdir build
+cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=prefix
 
 =Build:
 make
 
 =Installation
-make install
+make DESTDIR=destitationdir install
 
 =All patches, bug reports, ideas etc. send to dario_21_06@hotmail.com or use issue tracker
 http://code.google.com/p/qiviewer/issues/list
