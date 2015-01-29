@@ -1,3 +1,4 @@
+#ifdef WEBP_SUPPORT
 #include <QtCore/QDebug>
 #include <QtGui/QPainter>
 #include "webpdecoder.h"
@@ -115,3 +116,4 @@ bool WebpDecoder::decodeWebpImage(const QString d)
     free(out);
     return true;
 }
+#endif

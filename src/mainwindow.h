@@ -115,8 +115,10 @@ private:
 #ifndef QT_NO_PRINTER
   QPrinter printer;
 #endif
-
+#ifdef __linux__
   //functions
+  void checkIconTheme();
+#endif
   /*!
     \returns the last directory/path used
     */

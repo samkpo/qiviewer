@@ -204,6 +204,9 @@ void Settings::loadSettings()
     precision           = settings.value("fileSizePrecision",    2).toInt();
     windowSize          = settings.value("mw_size",              QSize(500, 400)).toSize();
     backgroundToShow    = settings.value("bgToShow",             "squares").toString();
+#ifdef __linux__
+    prefIconTheme       = settings.value("preferedIconTheme",    "oxygen").toString();
+#endif
     backgroundColor     = settings.value("backgroundColor",      defaultColor()).toStringList();
     recentFilesList     = settings.value("recentFiles").toStringList();
     settings.endGroup();    
@@ -277,6 +280,9 @@ void Settings::saveSettings()
     settings.setValue("backgroundColor", backgroundColor);
     settings.setValue("recentFiles", recentFilesList);
     settings.setValue("filesSorting", sorting);
+#ifdef __linux__
+    settings.setValue("preferedIconTheme", prefIconTheme);
+#endif
     settings.endGroup();
 
     settings.beginGroup("Toolbar");

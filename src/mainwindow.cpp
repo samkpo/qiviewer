@@ -20,6 +20,7 @@
 
 #include <QtGui>
 
+#include "defines.h"
 #include "mainwindow.h"
 #include "imagewidget.h"
 #include "zoomutils.h"
@@ -37,7 +38,16 @@ MainWindow::MainWindow()
 {
     //actions manager
     actionsManager = new ActionsManager(this);
-    
+
+    //Load settings
+    settings = new Settings();
+    settings->loadSettings();
+
+#ifdef __linux__
+    //Check icon theme
+    checkIconTheme();
+#endif
+
     //configure the allowed formats
     setNameFilters();
     
@@ -98,9 +108,8 @@ MainWindow::MainWindow()
     imageWidget->setContextMenuPolicy(Qt::ActionsContextMenu);
     
     //configure and load settings
-    settings = new Settings;
     this->loadSettings();
-    
+
     //update window title
     this->updateWindowTitle();
     
@@ -111,6 +120,54 @@ MainWindow::MainWindow()
     this->configureToolBarToolTip();
     
 }
+
+#ifdef __linux__
+//TODO mover a main como opcion
+void MainWindow::checkIconTheme()
+{
+    QIcon icon = QIcon::fromTheme("document-open");
+    if(icon.isNull()){
+        //no icons in here
+        //let's try another icon theme
+        qDebug() << "No icon theme loaded, trying another";
+
+        //Lets load the default icon theme folder
+        FileUtils fu;
+        if(fu.openFolder(ICON_THEMES_DEFAULT_FOLDER)){
+            qDebug() << "The folder exists, checing inside.";
+            QStringList themes = fu.getSubFolders(); //Themes are folders
+
+            if(!themes.empty()){
+                //trying to set the prefered icon theme
+                QString prefTheme = settings->getPreferedIconTheme();
+                qDebug() << "Prefered theme: " << prefTheme;
+
+                if(themes.contains(prefTheme)){
+                    qDebug() << "Setting theme:" << prefTheme ;
+                    QIcon::setThemeName(prefTheme);
+                }
+
+                //lets put the first that pops out
+                else{
+                    QStringListIterator ite(themes);
+                    if(ite.hasNext()){
+                        QString _t;
+                        do{
+                            _t = ite.next();
+                            qDebug() << "Trying with: " << _t;
+                            QIcon::setThemeName(ite.next());
+                        }while(QIcon::fromTheme("document-open").isNull() && ite.hasNext());
+                    }
+                }
+            }
+            else
+                qDebug() << "It's empty. Using backup theme.";
+        }
+        else
+            qDebug() << "The folder doesn't exists. I'll load the backup icon theme.";
+    }
+}
+#endif
 
 void MainWindow::pixmapChangedSlot()
 {
@@ -540,7 +597,7 @@ void MainWindow::createActions()
      *     "_goTo" "_moveTo" "_next" "_normalSize" "_open" "_openFolder" "_openLastFile" "_previous" "_print"
      *     "_rotateLeft" "_rotateRight" "_save" "_showMenuBar" "_showToolBar" "_toolbarMovable" "_zoomIn" "_zoomOut"
      */
-    
+
     actionsManager->addAction(new QAction(tr("&Open"), this), "_open", this, this, SLOT(open()), QKeySequence::Open);
     actionsManager->setToolTip("_open", tr("Open an image"));
     actionsManager->setActionIcon("_open", "document-open");
@@ -1261,8 +1318,6 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 void MainWindow::loadSettings()
 {
-    settings->loadSettings();
-    
     /*main app settings*/
     resize(settings->getWindowSize());
     getColorFromSettings(settings->getBackgroundColor());

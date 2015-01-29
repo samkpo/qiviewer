@@ -20,6 +20,7 @@
 
 #include <QtGui>
 #include "aboutdialog.h"
+#include "defines.h"
 #include "utils.h"
 
 AboutDialog::AboutDialog(QWidget* parent, Qt::WFlags fl) : QDialog( parent, fl )
@@ -29,11 +30,7 @@ AboutDialog::AboutDialog(QWidget* parent, Qt::WFlags fl) : QDialog( parent, fl )
     qDebug()<<"experimental webp support enabled";
 #endif
 
-#ifdef PKGVERSION
-    ui.versionLabel->setText(tr("Version %1").arg(QLatin1String(PKGVERSION)));
-#else
-    ui.versionLabel->setText(tr("Version %1").arg(tr("UNKNOWN", "Version unknown")));
-#endif
+    ui.versionLabel->setText(tr("Version %1").arg(QLatin1String(PROJECT_VERSION)));
     
     QString descString;
     descString.append("<p>");
@@ -57,7 +54,7 @@ AboutDialog::AboutDialog(QWidget* parent, Qt::WFlags fl) : QDialog( parent, fl )
     authorString.append("</b><br />");
     authorString.append(tr("Developer."));
     authorString.append("</p>");
-    authorString.append("<p><a href=\"mailto:dario_21_06@hotmail.com?Subject=");
+    authorString.append("<p><a href=\"mailto:aguilera.dario.i@gmail.com?Subject=");
     authorString.append(tr("Hello"));
     authorString.append("\">");
     authorString.append(tr("Email"));

@@ -15,7 +15,6 @@ QIviewer - Qt-based Image Viewer
 =Configure:
 Prefix is by default /usr, you can change it using PREFIX=prefix.
 To enable EXPERIMENTAL webp support, add CONFIG+=enable-webp to the following line
-To hack add CONFIG+=USE_DEVELOPING to the qmake execute line
 
 qmake PREFIX=prefix
 

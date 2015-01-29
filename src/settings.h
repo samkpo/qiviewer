@@ -83,6 +83,9 @@ public:
     inline QString getBGToShow() const{return backgroundToShow;}
     inline QString getLastDirUsed() const{return lastDirUsed;}
     inline QString getDefaultPath() const{return defaultPath;}
+#ifdef __linux__
+    inline QString getPreferedIconTheme() const{return prefIconTheme;}
+#endif
     inline QSize getWindowSize() const{return windowSize;}
     inline int getSorting() const{return sorting;}
     inline int getPathToUse() const{return pathToUse;}
@@ -109,6 +112,9 @@ public:
     inline void setBGTosShow(const QString d){backgroundToShow = d;}
     inline void setLastDirUsed(const QString d){lastDirUsed = d;}
     inline void setDefaultPath(const QString d){defaultPath = d;}
+#ifdef __linux__
+    inline void setPreferedIconTheme(const QString d){prefIconTheme = d;}
+#endif
     inline void setWindowSize(const QSize d){windowSize = d;}
     inline void setSorting(const int sort){sorting = sort;}
     inline void setPathToUse(const int d){pathToUse = d;}
@@ -144,6 +150,9 @@ private:
     QString defaultPath;
     QString eggEnd;
     QString eggBegin;
+#ifdef __linux__
+    QString prefIconTheme = "oxygen";
+#endif
     QSize windowSize;
     int sorting;
     int pathToUse;

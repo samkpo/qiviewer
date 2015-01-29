@@ -21,6 +21,7 @@
 #include <QtGui>
 #include <getopt.h>
 #include <iostream>
+#include "defines.h"
 #include "mainwindow.h"
 #include "eggsdialog.h"
 #include "configdialog.h"
@@ -38,27 +39,25 @@ int main(int argc, char* argv[])
     app.installTranslator(&qtTranslator);
 
     // app translations
-#ifdef PKGDATADIR
     QString dataDir = QLatin1String(PKGDATADIR);
-#else
-    QString dataDir("");
-#endif
-
+    qDebug() << "Data dir: " << __FUNCTION__ << dataDir;
+  
 #ifdef USE_DEVELOPING
-	qDebug() << "Developing";
+    qDebug() << "Developing";
     QString    localeDir = qApp->applicationDirPath() + QDir::separator() + "locale";
 #else
-qDebug() << "not developing";
+    qDebug() << "not developing";
 #if defined(Q_OS_OS2) //|| defined(Q_OS_WIN) ->this isn't checked
-  QString    localeDir = qApp->applicationDirPath() + QDir::separator() + "locale";
+    QString    localeDir = qApp->applicationDirPath() + QDir::separator() + "locale";
 #else
-  QString    localeDir = dataDir + QDir::separator() + "locale";
+    QString    localeDir = dataDir + QDir::separator() + "locale";
 #endif
 #endif
 
-  QTranslator translator;
-  translator.load(locale, localeDir);
-  app.installTranslator(&translator);
+    qDebug() << "Locale dir: " << localeDir;
+    QTranslator translator;
+    translator.load(locale, localeDir);
+    app.installTranslator(&translator);
 
 #ifndef Q_OS_LINUX
     QString BUILTIN_ICON_THEME = "oxygen";
@@ -116,7 +115,7 @@ qDebug() << "not developing";
                                  "<http://gnu.org/licenses/gpl.html>.\n"
                                  "This is free software: you are free to change it and redistribute.\n"
                                  "There is NO WARRANTY.\n"
-                                 ).arg(QLatin1String(PKGVERSION)).toStdString();
+                                 ).arg(QLatin1String(PROJECT_VERSION)).toStdString();
         re = 0;
     }
 

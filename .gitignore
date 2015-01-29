@@ -7,3 +7,6 @@ translations/.directory
 main.cpp~
 qiviewer.pro~
 *.cpp~
+install/
+*.cmake~
+*.txt~

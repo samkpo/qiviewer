@@ -137,6 +137,12 @@ public:
     inline QStringList getFilesList() const{return files;}
 
     /*!
+     * \brief getSubFolders
+     * \return all the sub folders in the current folder, without the "." and ".."
+     */
+    inline QStringList getSubFolders() const{return subFolders;}
+
+    /*!
       Goes to the file given by \a name, or if it's empty,
       then go to the file in the position \a position
       */
@@ -171,6 +177,11 @@ private:
       list with all the files (file name) in the current path
       */
     QStringList files;
+
+    /*!
+     * \brief subFolders
+     */
+    QStringList subFolders;
 
     /*!
       name filters used to explore the folder

@@ -92,7 +92,6 @@ bool FileUtils::openFolder(const QString folder)
             currentFileName = files.at(0);
             currentFilePath = QDir(folder).absolutePath();
             completeFileName = currentFilePath + QDir::separator() + currentFileName;
-            qDebug()<<currentFilePath<<currentFileName;
             dirLoaded = true;
             emit filePathChanged(currentFilePath);
         }
@@ -118,6 +117,7 @@ bool FileUtils::sortAndGetFiles(QString path)
     //explore the path and fill the file list
     QDir dir(path);
     files = dir.entryList(nameFilters, QDir::Files|QDir::Readable, QDir::SortFlags(sortFalg()));
+    subFolders = dir.entryList(QDir::Dirs|QDir::NoDotAndDotDot, QDir::NoSort);
 
     return !files.isEmpty();
 }
