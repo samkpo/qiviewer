@@ -25,6 +25,3 @@ make
 
 =Installation
 make DESTDIR=destitationdir install
-
-=All patches, bug reports, ideas etc. send to dario_21_06@hotmail.com or use issue tracker
-http://code.google.com/p/qiviewer/issues/list
