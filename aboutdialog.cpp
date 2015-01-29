@@ -57,7 +57,7 @@ AboutDialog::AboutDialog(QWidget* parent, Qt::WFlags fl) : QDialog( parent, fl )
     authorString.append("</b><br />");
     authorString.append(tr("Developer."));
     authorString.append("</p>");
-    authorString.append("<p><a href=\"mailto:aguilera.dario.i@gmail.com?Subject=");
+    authorString.append("<p><a href=\"mailto:dario_21_06@hotmail.com?Subject=");
     authorString.append(tr("Hello"));
     authorString.append("\">");
     authorString.append(tr("Email"));
