@@ -1,0 +1,2 @@
+<p><h3 style="font-family:ubuntu;color:MediumBlue;font-size:20px;">Happy Time</h></p>
+<p>If you want to modify the preferences of the easter eggs, you have to launch <code>qiviewer -e</code>.</p>

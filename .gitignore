@@ -1,0 +1,6 @@
+build/
+Makefile
+qiviewer.pro.user*
+.directory
+icons/.directory
+translations/.directory

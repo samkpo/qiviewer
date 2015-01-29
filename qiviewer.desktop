@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=QIviewer
+Name[es]=QIviewer
+Comment=A simple and lightweith image viewer
+Comment[es]=Un visor de Imágenes liviano y simple
+Exec=qiviewer
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Graphics;Viewer;
+MimeType=image/bmp;image/gif;image/jpeg;image/jpg;image/pjpeg;image/png;image/tiff;image/x-bmp;image/x-png;image/x-portable-bitmap;image/x-portable-pixmap;

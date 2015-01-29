@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>license.txt</file>
+        <file>eastereggs.txt</file>
+        <file>translators.txt</file>
+    </qresource>
+</RCC>
