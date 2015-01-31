@@ -10,3 +10,6 @@ qiviewer.pro~
 install/
 *.cmake~
 *.txt~
+CMakeLists.txt.user
+Makefile
+Makefile.*

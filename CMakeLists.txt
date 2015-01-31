@@ -31,8 +31,14 @@ ENDIF()
 
 option(USE_DEVELOPING "So, you are programming? good luck" OFF)
 IF(USE_DEVELOPING)
-    MESSAGE("Pelotudo")
+    MESSAGE("Developing")
     ADD_DEFINITIONS(-DUSE_DEVELOPING)
+ENDIF()
+
+option(WEBP_SUPPORT "Experimental support of WEBP" OFF)
+IF(WEBP_SUPPORT)
+    MESSAGE("webp")
+    ADD_DEFINITIONS(-DWEBP_SUPPORT)
 ENDIF()
 
 SET(ICON_THEMES_DEFAULT_FOLDER "/usr/share/icons")

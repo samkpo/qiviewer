@@ -1,5 +1,6 @@
 ADD_DEFINITIONS(${QT_DEFINITIONS})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/webp)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../)
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/defines.h.cmake

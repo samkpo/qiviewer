@@ -157,6 +157,12 @@ void MainWindow::checkIconTheme()
                             qDebug() << "Trying with: " << _t;
                             QIcon::setThemeName(ite.next());
                         }while(QIcon::fromTheme("document-open").isNull() && ite.hasNext());
+                        //Lets save the icon theme so the app look is consistent every time
+                        //it's launched
+                        if(!QIcon::fromTheme("document-open").isNull()){
+                            qDebug() << "Using theme: " << QIcon::themeName();
+                            settings->setPreferedIconTheme(QIcon::themeName());
+                        }
                     }
                 }
             }
