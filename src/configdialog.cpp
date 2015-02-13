@@ -20,6 +20,7 @@
 
 #include <QtGui>
 
+#include "mname.h"
 #include "configdialog.h"
 #include "locationpage.h"
 #include "generaloptionspage.h"
@@ -98,13 +99,14 @@ void ConfigDialog::closeEvent(QCloseEvent* event)
       case 0:
         break;
       case 1:
-        qDebug() << "the changes have not been saved";
+        qDebug() << __METHOD_NAME__ << ": changes not saved";
         break;
     }
 }
 
 void ConfigDialog::saveSettings()
 {
+    qDebug() << __METHOD_NAME__ ;
     if(gPage->canSave()){
         gPage->saveSettings();
     }
@@ -116,11 +118,14 @@ void ConfigDialog::saveSettings()
     }
 
     ui.applyButton->setEnabled(false);
+
+    qDebug() << __METHOD_NAME__<< "Saving settings";
     emit settingsSaved();
 }
 
 void ConfigDialog::settingsChangedSlot()
 {
+    qDebug()<< __METHOD_NAME__;
     ui.applyButton->setEnabled(true);
     ui.acceptButton->setEnabled(true);
 }

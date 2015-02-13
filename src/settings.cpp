@@ -17,7 +17,7 @@
 * Free Software Foundation, Inc.                                     *
 * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.      *
 **********************************************************************/
-
+#include "mname.h"
 #include "settings.h"
 
 Settings::Settings()
@@ -180,7 +180,9 @@ void Settings::getPreviousConfig()
 
 void Settings::loadSettings()
 {
-    qDebug()<<"load settings";
+    //TODO no esta guardando nio leyendo
+    //Los carga llamando por separado al dialogo de configuracion, sino no
+    qDebug() << __METHOD_NAME__;
     QSettings settings("QIviewer", "qiviewer");
 
     //check if need to load previous version settings
@@ -250,10 +252,13 @@ void Settings::loadSettings()
     }
     shortcuts.remove("creatNewShorcuts");
     settings.endGroup();
+
+    qDebug() << __METHOD_NAME__ << ": Settings loaded";
 }
 
 void Settings::saveSettings()
 {
+    qDebug() << __METHOD_NAME__;
     QSettings settings("QIviewer", "qiviewer");
     settings.beginGroup("Eggs");
     settings.setValue("enableEggs", enableEggs);
@@ -310,4 +315,5 @@ void Settings::saveSettings()
         }
     }
     settings.endGroup();
+    qDebug() << __METHOD_NAME__ << "Settings saved";
 }

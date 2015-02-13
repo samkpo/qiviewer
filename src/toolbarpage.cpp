@@ -1,3 +1,4 @@
+#include "mname.h"
 #include "toolbarpage.h"
 #include "settings.h"
 #include "ui_toolbarpage.h"
@@ -121,13 +122,16 @@ int ToolbarPage::getButtonStyle()
 
 void ToolbarPage::settingsChangedSlot()
 {
-    qDebug()<<"Settings changed slot tbp";
+    //TODO change to __METHOD_NAME__
+    qDebug() << __METHOD_NAME__ ;
     settingsChangedBool = true;
     emit settingsChanged();
 }
 
 void ToolbarPage::saveSettings()
 {
+    //TODO change to __METHOD_NAME__
+  qDebug() << __FUNCTION__ << "Saving from tb";
     if(settingsChangedBool){
         settings->setTBMovable(!ui->lockToolbar->isChecked());
         settings->setTBVisible(ui->toolbarVisible->isChecked());

@@ -21,6 +21,7 @@
 #include <QtGui>
 #include <getopt.h>
 #include <iostream>
+#include "mname.h"
 #include "defines.h"
 #include "mainwindow.h"
 #include "eggsdialog.h"
@@ -40,13 +41,13 @@ int main(int argc, char* argv[])
 
     // app translations
     QString dataDir = QLatin1String(PKGDATADIR);
-    qDebug() << "Data dir: " << __FUNCTION__ << dataDir;
+    qDebug() << __METHOD_NAME__ << "Data dir: " << __FUNCTION__ << dataDir;
   
 #ifdef USE_DEVELOPING
-    qDebug() << "Developing";
+    qDebug() << __METHOD_NAME__ << "Developing";
     QString    localeDir = qApp->applicationDirPath() + QDir::separator() + "locale";
 #else
-    qDebug() << "not developing";
+    qDebug() << __METHOD_NAME__ << "Not developing";
 #if defined(Q_OS_OS2) //|| defined(Q_OS_WIN) ->this isn't checked
     QString    localeDir = qApp->applicationDirPath() + QDir::separator() + "locale";
 #else
@@ -54,7 +55,7 @@ int main(int argc, char* argv[])
 #endif
 #endif
 
-    qDebug() << "Locale dir: " << localeDir;
+    qDebug() << __METHOD_NAME__ << "Locale dir: " << localeDir;
     QTranslator translator;
     translator.load(locale, localeDir);
     app.installTranslator(&translator);

@@ -13,3 +13,4 @@ install/
 CMakeLists.txt.user
 Makefile
 Makefile.*
+build-*

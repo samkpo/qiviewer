@@ -8,7 +8,7 @@ set(BINDIR ${CMAKE_INSTALL_PREFIX}/bin)
 set(DATADIR ${CMAKE_INSTALL_PREFIX}/share)
 set(PKGDATADIR ${DATADIR}/qiviewer)
 set(XDG_APPS_INSTALL_DIR /usr/share/applications)
-message("PKGDATADIR: " ${PKGDATADIR})
+message("-- PKGDATADIR: " ${PKGDATADIR})
 
 # Global CMake options
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -25,19 +25,19 @@ INCLUDE(${QT_USE_FILE})
 
 option(USE_DEBUGGING "Use debbuging messages" OFF)
 IF(USE_DEBUGGING)
-    MESSAGE("Pelotudo")
+    MESSAGE("-- Use debbuging messages")
     ADD_DEFINITIONS(-DUSE_DEBUGGING)
 ENDIF()
 
 option(USE_DEVELOPING "So, you are programming? good luck" OFF)
 IF(USE_DEVELOPING)
-    MESSAGE("Developing")
+    MESSAGE("-- Developing")
     ADD_DEFINITIONS(-DUSE_DEVELOPING)
 ENDIF()
 
 option(WEBP_SUPPORT "Experimental support of WEBP" OFF)
 IF(WEBP_SUPPORT)
-    MESSAGE("webp")
+    MESSAGE("-- Webp support (experimental)")
     ADD_DEFINITIONS(-DWEBP_SUPPORT)
 ENDIF()
 

@@ -1,4 +1,5 @@
 #include <QtGui/QFileDialog>
+#include "mname.h"
 #include "locationpage.h"
 #include "settings.h"
 #include "ui_locationpage.h"
@@ -76,7 +77,7 @@ LocationPage::~LocationPage()
 
 void LocationPage::saveSettings()
 {
-    qDebug()<<"Location page: save settings lp";
+    qDebug() << __METHOD_NAME__ ;
     if(settingsChangedBool){
         settings->setDefaultPath(ui->defaultPathLineEdit->text());
         settings->setPathToUse(this->getLastDirOption());

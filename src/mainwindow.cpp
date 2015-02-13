@@ -20,6 +20,7 @@
 
 #include <QtGui>
 
+#include "mname.h"
 #include "defines.h"
 #include "mainwindow.h"
 #include "imagewidget.h"
@@ -351,7 +352,7 @@ void MainWindow::moveToSlot()
     
     QString newFileName = QFileDialog::getExistingDirectory(this, tr("Move to"), getLastDir());
     if(fileUtils->moveFile(newFileName)){
-        qDebug()<<"moved";
+        qDebug() << __FUNCTION__  << "moved";
         recentFilesPath.removeAt(0);
         createRecentFilesMenu();
         openImage();
@@ -360,7 +361,8 @@ void MainWindow::moveToSlot()
 
 void MainWindow::configureProgram()
 {
-    saveSettings();
+    qDebug() << __METHOD_NAME__;
+    this->saveSettings();
     ConfigDialog con(this);
     con.setWindowIcon(QIcon::fromTheme("configure"));
     con.setWindowTitle(tr("Configuration"));
@@ -398,7 +400,7 @@ void MainWindow::goToSlot()
 
 void MainWindow::configureToolBarSlot()
 {
-    qDebug()<<"configure toolbars";
+    qDebug() << __METHOD_NAME__ ;
     EditToolBar etb;
     etb.setActionsList(actionsManager->getActionsMap(), settings->getActionsLoaded());
     etb.setDefaultActions(settings->defaultActions());
@@ -417,6 +419,7 @@ void MainWindow::configureToolBarSlot2(QStringList l)
 
 void MainWindow::configureShortcutsSlot()
 {
+    qDebug() << __METHOD_NAME__;
     ShortcutEditor sce;
     sce.setActionsList(actionsManager->getActionsList());
     sce.setDefaultShortcuts(defaultShortcuts);
@@ -439,7 +442,6 @@ void MainWindow::resizeEvent(QResizeEvent *)
     if(imageSetted){
         zoomWidget->maxSizeChanged(this->centralWidget()->size()/* - QSize(20,20)*/);
     }
-    qDebug()<<"tamaño del widget central: "<<this->centralWidget()->size();
 }
 
 void MainWindow::setUpToolBar(QStringList sl, Qt::ToolBarArea a, Qt::ToolButtonStyle s, bool v, bool zl)
@@ -1324,6 +1326,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 void MainWindow::loadSettings()
 {
+    qDebug() << __METHOD_NAME__ << "Loading settings";
     settings->loadSettings();
     /*main app settings*/
     resize(settings->getWindowSize());
@@ -1368,6 +1371,7 @@ void MainWindow::loadSettings()
     }
     
     this->updateActions();
+    qDebug() << __METHOD_NAME__ << "settings loaded";
 }
 
 void MainWindow::saveSettings()
