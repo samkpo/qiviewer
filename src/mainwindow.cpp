@@ -470,28 +470,28 @@ void MainWindow::setUpToolBar(QStringList sl, Qt::ToolBarArea a, Qt::ToolButtonS
                      *                catch(std::string e){
                      *                    qDebug()<<"While trying to add action: " + QString().fromStdString(e);
                      }*/
+            }
         }
     }
-}
 
-//add the toolbar to the mainWindow
-addToolBar(a, mainToolBar);
+    //add the toolbar to the mainWindow
+    addToolBar(a, mainToolBar);
 
-//settning button style
-mainToolBar->setToolButtonStyle(s);
+    //settning button style
+    mainToolBar->setToolButtonStyle(s);
 
-//zoom slider stuff
-if(zl){
-    zoomSlider = new QSlider(Qt::Horizontal);
-    zoomSlider->setMaximumSize(QSize(75, 25));
-    zoomSlider->setRange(zoomWidget->getMinZoomValue(),
-                         zoomWidget->getMaxZoomValue());
-    connect(zoomWidget, SIGNAL(sliderSignal(int)), zoomSlider, SLOT(setValue(int)));
-    connect(zoomSlider, SIGNAL(valueChanged(int)), zoomWidget, SLOT(sliderSlot(int)));
-    mainToolBar->addSeparator();
-    mainToolBar->addWidget(zoomSlider);
-    zoomSlider->setEnabled(false);
-}
+    //zoom slider stuff
+    if(zl){
+        zoomSlider = new QSlider(Qt::Horizontal);
+        zoomSlider->setMaximumSize(QSize(75, 25));
+        zoomSlider->setRange(zoomWidget->getMinZoomValue(),
+                             zoomWidget->getMaxZoomValue());
+        connect(zoomWidget, SIGNAL(sliderSignal(int)), zoomSlider, SLOT(setValue(int)));
+        connect(zoomSlider, SIGNAL(valueChanged(int)), zoomWidget, SLOT(sliderSlot(int)));
+        mainToolBar->addSeparator();
+        mainToolBar->addWidget(zoomSlider);
+        zoomSlider->setEnabled(false);
+    }
 }
 
 void MainWindow::createMenus()
