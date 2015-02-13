@@ -1324,6 +1324,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 void MainWindow::loadSettings()
 {
+    settings->loadSettings();
     /*main app settings*/
     resize(settings->getWindowSize());
     getColorFromSettings(settings->getBackgroundColor());
