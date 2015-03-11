@@ -26,7 +26,7 @@ bool FileUtils::openFile(const QString fileName)
 
     //check if the new file name is valid
     if(fileName.isEmpty() || fileName.isNull()){
-        qDebug()<<tr("Empty file name, i can't do anything");
+        qDebug()<<tr("Empty file name, i can't do anything.");
         return false;
     }
 
@@ -67,7 +67,7 @@ bool FileUtils::openFolder(const QString folder)
 
     //check if the folder string is empty or null
     if(folder.isEmpty() || folder.isNull()) {
-        qDebug()<<tr("Empty path, i can't do anything");
+        qDebug()<<tr("Empty path, i can't do anything.");
         return false;
     }
 
@@ -78,7 +78,7 @@ bool FileUtils::openFolder(const QString folder)
 
     //check that it isn't the same than the older
     else if(QDir(folder).absolutePath() == currentFilePath){
-        qDebug()<<tr("The folder is the same than the current");
+        qDebug()<<tr("The folder is the same than the current.");
         return false;
     }
 
@@ -254,7 +254,7 @@ bool FileUtils::moveFile(const QString path)
 {
     //check if the new folder is the same than the current one
     if(currentFilePath == QDir(path).path()){
-        qDebug()<<tr("The image wasn't moved\nThe new folder is iqual to the older");
+        qDebug()<<tr("The image wasn't moved.\nThe new folder is iqual to the older.");
         newFolder = false;
         return false;
     }

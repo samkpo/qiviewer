@@ -74,7 +74,7 @@ GeneralOptionsPage::GeneralOptionsPage(QWidget *parent) :
     //sets the combobox
     ui->BGTypeComboBox->setCurrentIndex(getBGSelection(0));
     ui->BGTypeComboBox->setToolTip(tr("With this you select the kind of background you want \n"
-                                     "to use for images with alpha channel"));
+                                     "to use for images with alpha channel."));
 
     //configuring the color button
     ui->colorButton->setIcon(QIcon(iconForButton()));

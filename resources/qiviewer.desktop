@@ -3,6 +3,7 @@ Name=QIviewer
 Name[es]=QIviewer
 Comment=A simple and lightweith image viewer
 Comment[es]=Un visor de Imágenes liviano y simple
+Comment[pt]=Visualizador de imagens em tecnologia Qt
 Exec=qiviewer
 StartupNotify=false
 Terminal=false
