@@ -100,18 +100,18 @@ bool WebpDecoder::decodeWebpImage(const QString d)
     }
 
     if (!out) {
-        qDebug()<<tr("[WEBP]Decoding of %1 failed.").arg(in_file);
+        qDebug()<<tr("[WEBP]decoding of %1 failed.").arg(in_file);
         return false;
     }
 
-    qDebug()<<tr("[WEBP]Decoded %1. Dimensions: %2 x %3. Now opening...").arg(in_file).arg(width).arg(height);
+    qDebug()<<tr("[WEBP]%1 decoded. Dimensions: %2 x %3. Now opening...").arg(in_file).arg(width).arg(height);
 
     int ok = 1;
     ok &= readImage(out,width,height,pixmap);
     if (ok)
-        qDebug()<<tr("[WEBP]File %1 opened").arg(in_file);
+        qDebug()<<tr("[WEBP]file %1 opened").arg(in_file);
     else
-        qDebug()<<tr("[WEBP]Error opening file %s !!");
+        qDebug()<<tr("[WEBP]error opening file %s !!");
 
     free(out);
     return true;

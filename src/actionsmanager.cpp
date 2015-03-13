@@ -25,7 +25,7 @@ ActionsManager::ActionsManager(QObject *parent) :
 
 QString ActionsManager::invalidId(QString id)
 {
-    return tr("The id %1 isn't valid").arg(id);
+    return tr("The id %1 isn't valid.").arg(id);
 }
 
 void ActionsManager::setActionIcon(QString id, QString iconName)
