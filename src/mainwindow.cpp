@@ -642,13 +642,13 @@ void MainWindow::createActions()
     actionsManager->setActionIcon("_adjustSize", "zoom-fit-best");
     
     actionsManager->addAction(new QAction(tr("Rotate to right"), this), "_rotateRight", this, this, SLOT(rotateRight()));
-    actionsManager->setToolTip("_rotateRight", tr("Rotate image in the clockwise clock"));
+    actionsManager->setToolTip("_rotateRight", tr("Rotate image clockwise"));
     actionsManager->setEnabled("_rotateRight", false);
     actionsManager->setActionIcon("_rotateRight", "object-rotate-right");
     
     actionsManager->addAction(new QAction(tr("Rotate to Left"), this), "_rotateLeft", this, this, SLOT(rotateLeft()));
     actionsManager->setEnabled("_rotateLeft", false);
-    actionsManager->setToolTip("_rotateLeft", tr("Rotate image counter-clockwise to clockwise"));
+    actionsManager->setToolTip("_rotateLeft", tr("Rotate image counter-clockwise"));
     actionsManager->setActionIcon("_rotateLeft", "object-rotate-left");
     
     actionsManager->addAction(new QAction(tr("Flip vertically"), this), "_flipVertically", this, this, SLOT(flipVertically()));
@@ -671,7 +671,7 @@ void MainWindow::createActions()
     actionsManager->setEnabled("_next", false);
     actionsManager->setActionIcon("_next", "go-next");
     
-    actionsManager->addAction(new QAction(tr("Go to the first"), this), "_goFirst", this, this, SLOT(goFirst()), Qt::Key_Home);
+    actionsManager->addAction(new QAction(tr("Go to next image"), this), "_goFirst", this, this, SLOT(goFirst()), Qt::Key_Home);
     actionsManager->setEnabled("_goFirst", false);
     actionsManager->setActionIcon("_goFirst", "go-first");
     
@@ -679,7 +679,7 @@ void MainWindow::createActions()
     actionsManager->setEnabled("_previous", false);
     actionsManager->setActionIcon("_previous", "go-previous");
     
-    actionsManager->addAction(new QAction(tr("Go to the last"), this), "_goLast", this, this, SLOT(goLast()), Qt::Key_End);
+    actionsManager->addAction(new QAction(tr("Go to previous image"), this), "_goLast", this, this, SLOT(goLast()), Qt::Key_End);
     actionsManager->setEnabled("_goLast", false);
     actionsManager->setActionIcon("_goLast", "go-last");
     
@@ -707,7 +707,7 @@ void MainWindow::createActions()
     
     actionsManager->addAction(new QAction(tr("Delete"), this), "_deleteFile", this, this, SLOT(deleteFileSlot()), QKeySequence::Delete);
     actionsManager->setEnabled("_deleteFile", false);
-    actionsManager->setToolTip("_deleteFile", tr("This deletes completly the file from the disk, doesn't move it to the trash"));
+    actionsManager->setToolTip("_deleteFile", tr("This deletes completly the file from the disk, doesn't move it to the trash."));
     actionsManager->setActionIcon("_deleteFile", "edit-delete");
     
     actionsManager->addAction(new QAction(tr("Move to..."), this), "_moveTo", this, this, SLOT(moveToSlot()));
@@ -1032,7 +1032,7 @@ void MainWindow::openDir()
     
     //show a message
     else{
-        QMessageBox::information(this, tr("QIviewer"), tr("No folder selected, i can't do anything"),
+        QMessageBox::information(this, tr("QIviewer"), tr("No folder selected, i can't do anything."),
                                  QMessageBox::Ok);
     }
 }
@@ -1096,7 +1096,7 @@ void MainWindow::openRecentFile()
     
     //check if the file exists
     if(!fileUtils->openFile(temp)){
-        QMessageBox::information(this, tr("QIviewer"), tr("The file doesn't exist, may be it's been moved or deleted."),
+        QMessageBox::information(this, tr("QIviewer"), tr("The file doesn't exist, maybe it's been moved or deleted."),
                                  QMessageBox::Ok);
         recentFilesPath.removeOne(temp);
         createRecentFilesMenu();

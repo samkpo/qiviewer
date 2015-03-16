@@ -20,7 +20,7 @@ file(GLOB_RECURSE CODE_FILES *.cpp *.c)
 ################################################################################
 ############################## Translations stuff ##############################
 ################################################################################
-SET(LANGUAGES cs  el  es_AR  es_ES  ru_RU)
+SET(LANGUAGES cs  el  es_AR  es_ES  pt ru_RU)
 MACRO (QT4_WRAP_TS lupdate_outputs lrelease_outputs)
     FOREACH (it ${ARGN})
       SET(tsfile ${CMAKE_CURRENT_SOURCE_DIR}/translations/${it}.ts)
