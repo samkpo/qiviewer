@@ -36,19 +36,15 @@ AboutDialog::AboutDialog(QWidget* parent, Qt::WFlags fl) : QDialog( parent, fl )
     descString.append("<p>");
     descString.append(tr("A simple and lightweight image viewer, written totally in Qt."));
     descString.append("</p><p>");
-    descString.append("<a href=\"http://code.google.com/p/qiviewer\">");
+    descString.append("<a href=\"https://github.com/samkpo/qiviewer/\">");
     descString.append(tr("Home page"));
-    descString.append("</a>");
-    descString.append(" - ");
-    descString.append("<a href=\"http://twitter.com/qiviewer\">");
-    descString.append(tr("Twitter account"));
     descString.append("</a></p>");
     ui.descriptionLabel->setText(descString);
     ui.descriptionLabel->setTextFormat(Qt::RichText);
 
     QString authorString;
     authorString.append("<p>");
-    authorString.append(tr("Use %1Google code project page%2 to report bugs, patches or ideas.").arg("<a href=\"http://code.google.com/p/qiviewer/issues/list\">", "</a>"));
+    authorString.append(tr("Use %1Github issues page%2 to report bugs, patches or ideas.").arg("<a href=\"https://github.com/samkpo/qiviewer/issues\">", "</a>"));
     authorString.append("</p><p><b>");
     authorString.append("Aguilera Dario");
     authorString.append("</b><br />");
@@ -69,6 +65,9 @@ AboutDialog::AboutDialog(QWidget* parent, Qt::WFlags fl) : QDialog( parent, fl )
     thanksTo.append(tr("Icons on systems without icon themes"));
     thanksTo.append("</li><li>");
     thanksTo.append(tr("OS/2 support"));
+    thanksTo.append("</li></ul></p>");    
+    thanksTo.append("<p><b>Acidrums4</b><ul><li>");
+    thanksTo.append(tr("QIviewer icon"));
     thanksTo.append("</li></ul></p>");
     ui.thaksToLabel->setText(thanksTo);
 

@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
+    	<file>qiviewer.png</file>
         <file>license.txt</file>
         <file>eastereggs.txt</file>
         <file>translators.txt</file>
