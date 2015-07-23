@@ -113,6 +113,9 @@ MainWindow::MainWindow()
 
     //update window title
     this->updateWindowTitle();
+
+    //Set window icon
+    this->setWindowIcon(QIcon(":qiviewer.png"));
     
     //show or hide menu bar
     this->showHideMenuBar();
