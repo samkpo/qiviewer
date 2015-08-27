@@ -55,17 +55,6 @@ ADD_CUSTOM_TARGET(lrelease-qt4
 #   message(${qm_file})
 # endforeach(a ${LANGUAGES})
 
-SET(LANGUAGE_TS_FILES)
-FOREACH(LANGUAGE ${LANGUAGES})
-  SET(TS_FILE "${CMAKE_CURRENT_SOURCE_DIR}/translations/${LANGUAGE}.ts")
-  SET(LANGUAGE_TS_FILES ${LANGUAGE_TS_FILES} ${TS_FILE})
-  SET_SOURCE_FILES_PROPERTIES(${TS_FILE} PROPERTIES OUTPUT_LOCATION
-    ${CMAKE_CURRENT_BINARY_DIR}/locale)
-ENDFOREACH(LANGUAGE ${LANGUAGES})
-IF(LANGUAGE_TS_FILES) 
-  QT4_ADD_TRANSLATION(qm_files ${LANGUAGE_TS_FILES})  
-ENDIF(LANGUAGE_TS_FILES)
-
 ###############################################################################
 ################################## Libraries ##################################
 ###############################################################################
