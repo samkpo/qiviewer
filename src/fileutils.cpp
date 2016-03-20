@@ -247,7 +247,7 @@ void FileUtils::setFileInfo(const QString name)
     currentFileName = f.fileName();
     currentFilePath = f.absolutePath();
     completeFileName = f.absoluteFilePath();
-    f.~QFileInfo();
+    //f.~QFileInfo(); //WTF? Explicit descruction can lead to crashes due to double freeing.
 }
 
 bool FileUtils::moveFile(const QString path)

@@ -19,6 +19,8 @@
  **********************************************************************/
 
 #include <QtGui>
+#include <QImageReader>
+#include <QImageWriter>
 
 #include "mname.h"
 #include "defines.h"
@@ -938,19 +940,25 @@ QString MainWindow::getLastDir() const
 }
 
 void MainWindow::setNameFilters()
-{
-    nameFilters << "*.png" << "*.pbm"
-    << "*.jpg" << "*.jpeg"
-    << "*.gif" << "*.tiff"
-    << "*.xbm" << "*.JPG"
-    << "*.bmp" << "*.ppm"
-    << "*.pgm" << "*.mng"
-    << "*.xpm"
+{   
+    /*
+     * Use known formats instead of hardcoded ones.
+     */
+    
+    foreach(QByteArray format, QImageReader::supportedImageFormats()) {
+        nameFilters << QString("*." + format);
+    }
+    
     #ifdef WEBP_SUPPORT
-    << "*.webp"
+    nameFilters << "*.webp";
     #endif
-    << "*.svg" << "*.svgz";
+    
     nameFilters.removeDuplicates();
+    
+    foreach(QByteArray format, QImageWriter::supportedImageFormats()) {
+        writableNameFilters << QString("*." + format);
+    }
+    writableNameFilters.removeDuplicates();
 }
 
 void MainWindow::saveImage(QString fileName)
@@ -985,22 +993,17 @@ void MainWindow::save()
 
 void MainWindow::saveAs()
 {   
-    //create a list with the formas that can be used as output
-    QStringList g = nameFilters;
-    g.removeAll("*.gif");
-    g.removeAll("*.mng");
-    g.removeAll("*.pbm");
-    g.removeAll("*.pgm");
-    g.removeAll("*.svg");
-    g.removeAll("*.svgz");
-    #ifdef WEBP_SUPPORT
-    g.removeAll("*.webp");
-    #endif
+    QStringList separateFilters;
+    foreach(QString filter, writableNameFilters) {
+        if (filter.size() > 2 && filter.at(0) == '*' && filter.at(1) == '.') {
+            separateFilters << QString("%1 (%2)").arg(filter.mid(2).toUpper(), filter);
+        }
+    }
     
     //call the save dialog
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"),
                                                     fileUtils->getFilePath(),
-                                                    tr("Image Files (%1)").arg(g.join(" ")));
+                                                    tr("Image Files (%1);;%2").arg(writableNameFilters.join(" "), separateFilters.join(";;")));
     
     //save the image
     this->saveImage(fileName);
@@ -1118,11 +1121,18 @@ void MainWindow::open()
         return;
     }
     
+    QStringList separateFilters;
+    foreach(QString filter, nameFilters) {
+        if (filter.size() > 2 && filter.at(0) == '*' && filter.at(1) == '.') {
+            separateFilters << QString("%1 (%2)").arg(filter.mid(2).toUpper(), filter);
+        }
+    }
+    
     //get a filename from a open dialog
     QString fileName = QFileDialog::getOpenFileName(this,
                                                     tr("Open image", "dialog to open file"),
                                                     getLastDir(),
-                                                    tr("Image Files (%1)").arg(nameFilters.join(" ")));
+                                                    tr("Image Files (%1);;%2;;Any (*)").arg(nameFilters.join(" "), separateFilters.join(";;")));
 
     //if the filename name isn't empty, open the file
     if(!(fileName.isEmpty())){

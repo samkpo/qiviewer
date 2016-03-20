@@ -90,6 +90,8 @@ private:
   bool pixmapChanged;
   int compressLevel;
   QStringList nameFilters;
+  QStringList writableNameFilters;
+  
   QScrollArea *scrollArea;
   QStringList actionsLoaded;
   QString lastDirUsed;//could i delete it and just use archivo->absoluteFilePath()? nop
