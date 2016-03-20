@@ -20,8 +20,9 @@ file(GLOB_RECURSE CODE_FILES *.cpp *.c)
 ################################################################################
 ############################## Translations stuff ##############################
 ################################################################################
-SET(LANGUAGES cs  el  es_AR  es_ES  pt ru_RU)
+SET(LANGUAGES cs el es_AR es_ES pt ru_RU)
 MACRO (QT4_WRAP_TS lupdate_outputs lrelease_outputs)
+    file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/locale)
     FOREACH (it ${ARGN})
       SET(tsfile ${CMAKE_CURRENT_SOURCE_DIR}/translations/${it}.ts)
       ADD_CUSTOM_COMMAND(OUTPUT ${tsfile}
@@ -48,12 +49,12 @@ ADD_CUSTOM_TARGET(lrelease-qt4
   DEPENDS ${lrelease_outputs}
 )
 
-# SET(qm_files)
-# foreach(a ${LANGUAGES})
-#   set(qm_file "${CMAKE_CURRENT_BINARY_DIR}/locale/${a}.qm")
-#   set(qm_files ${qm_file} ${qm_files})
-#   message(${qm_file})
-# endforeach(a ${LANGUAGES})
+SET(qm_files)
+foreach(a ${LANGUAGES})
+  set(qm_file "${CMAKE_CURRENT_BINARY_DIR}/locale/${a}.qm")
+  set(qm_files ${qm_file} ${qm_files})
+  message(${qm_file})
+endforeach(a ${LANGUAGES})
 
 ###############################################################################
 ################################## Libraries ##################################
