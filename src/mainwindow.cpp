@@ -950,7 +950,7 @@ void MainWindow::setNameFilters()
     }
     
     #ifdef WEBP_SUPPORT
-    nameFilters << "*.webp"
+    nameFilters << "*.webp";
     #endif
     
     nameFilters.removeDuplicates();
